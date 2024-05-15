@@ -35,4 +35,5 @@ Understand and implement decorators in TypeScript to modify and enhance class be
 - Apply `MyReadOnly` to a getter in MyTestClass.
 
 ## Test
+![image](https://github.com/JoyZhang2023/TypeScript_Decorator/assets/137982978/a8eb65c9-e765-4928-b664-f1d8612c3dc7)
 
