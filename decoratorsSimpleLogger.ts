@@ -9,30 +9,35 @@ function LogMethod(target: any, key: string, descriptor: PropertyDescriptor){
 }
 
 // accessor decorator prevents modification of a property
-// type MyReadOnly = (target: Function)
+function MyReadOnly(target: any, key: string, descriptor: PropertyDescriptor) {
+    descriptor.set= ()=> null;
+    console.log("Read only decorator working.");
+}
 
 /**
  * test class with 2 properties and 2 get method
  */
 @SimpleLogger
 class MyTestClass {
-    name: string;
-    classCode: number;
+    public _name: string;
+    private classCode: number;
 
     constructor(name: string, classCode: number) {
-        this.name = name;
+        this._name = name;
         this.classCode = classCode;
     }
 
     @LogMethod
-    getName(): string {
-        return this.name;
+    greet() {
+        console.log("New Class has been set up!");
     }
 
-    getClassCode(): number {
-        return this.classCode;
+    @MyReadOnly
+    get name() {
+        return this._name;
     }
-}
+}    
 
 // test decorator
 const MyClass = new MyTestClass("Mobile Development", 340);
+const className = MyClass.name;
