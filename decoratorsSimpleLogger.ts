@@ -3,7 +3,13 @@ function SimpleLogger(constructor: Function) {
     console.log("New class is instantiated.");
 }
 
+// method decorator logs method calls of MyTestClass
+function LogMethod(target: any, key: string, descriptor: PropertyDescriptor){
+    console.log("A method is called");
+}
 
+// accessor decorator prevents modification of a property
+// type MyReadOnly = (target: Function)
 
 /**
  * test class with 2 properties and 2 get method
@@ -18,6 +24,7 @@ class MyTestClass {
         this.classCode = classCode;
     }
 
+    @LogMethod
     getName(): string {
         return this.name;
     }
